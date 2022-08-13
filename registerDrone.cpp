@@ -10,6 +10,43 @@
 using namespace std;
 using std::fstream;
 
+uint256_t power(uint256_t x, uint256_t y, uint256_t p)
+{
+
+    uint256_t res = 1;     // Initialize result 
+
+
+    x = x % p; // Update x if it is more than or 
+
+                // equal to p
+
+
+
+    if (x == 0) return 0; // In case x is divisible by p;
+
+
+    while (y > 0)
+
+    {
+
+        // If y is odd, multiply x with result 
+
+        if (y & 1)
+
+            res = (res * x) % p;
+
+
+        // y must be even now 
+
+        y = y >> 1; // y = y/2 
+
+        x = (x * x) % p;
+
+    }
+
+    return res;
+}
+
 //perform the SHA3-256 hash
 std::string sha3_256(const std::string& input)
 {
@@ -117,8 +154,9 @@ int main()
     uint256_t  x = uint256_t(output, 16);
     std::cout << "lo : " << x << "\n";
 
-    uint256_t A = g ^ x;
-    A = A % n;
+    // uint256_t A = g ^ x;
+    // A = A % n;
+    uint256_t A = power(g,x,n);
     std::cout << "A : " << A << "\n";
 
     string loc = "server/user data/user data" + user + ".txt";

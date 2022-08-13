@@ -9,6 +9,50 @@
 
 using namespace std;
 
+/// <summary>
+/// calculate power
+/// </summary>
+/// <param name="x"></param>
+/// <param name="y"></param>
+/// <param name="p">modulo</param>
+/// <returns></returns>
+uint256_t power(uint256_t x, uint256_t y, uint256_t p)
+{
+
+    uint256_t res = 1;     // Initialize result 
+
+
+    x = x % p; // Update x if it is more than or 
+
+                // equal to p
+
+
+
+    if (x == 0) return 0; // In case x is divisible by p;
+
+
+    while (y > 0)
+
+    {
+
+        // If y is odd, multiply x with result 
+
+        if (y & 1)
+
+            res = (res * x) % p;
+
+
+        // y must be even now 
+
+        y = y >> 1; // y = y/2 
+
+        x = (x * x) % p;
+
+    }
+
+    return res;
+}
+
 int main()
 {
     FILE* fptr;
@@ -105,11 +149,15 @@ int main()
 
     clock_t start = clock();
     uint256_t q = (X + y) % (n - 1);
-    uint256_t val1 = g ^ q;
-    val1 = val1 % n;
+    // uint256_t val1 = g ^ q;
+    // val1 = val1 % n;
+    uint256_t val1 = power(g, q, n);
+    cout << "val1=" << val1<< endl;
 
-    uint256_t c = g ^ y;
-    c = c % n;
+    // uint256_t c = g ^ y;
+    // c = c % n;
+    uint256_t c = power(g, y, n);
+    cout << "c=" << c <<endl;
 
     string locvalue = "server/user data/user data" + user + "value.txt";
     ofstream datauservaluefile;
