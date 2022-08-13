@@ -1,7 +1,1 @@
-this 
-is
-very
-secret
-info
-authorised users
-only!!
+this is very secret info authorised users only!!
