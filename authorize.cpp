@@ -126,6 +126,8 @@ int main()
     // close the file
     fclose(fptr);
     val1 = uint256_t(buffer, 10);
+
+    cout << "val1=" << val1<< endl;
     //end proses value file
 
     //open chalenge file
@@ -143,6 +145,7 @@ int main()
     // close the file
     fclose(fptr);
     c = uint256_t(buffer, 10);
+    cout << "c=" << c << endl;
     //end proses chalenge file
 
     //open A file
@@ -160,10 +163,13 @@ int main()
     // close the file
     fclose(fptr);
     A = uint256_t(buffer, 10);
+    cout << "b=" << A << endl;
     //end proses A file
 
     uint256_t d = c * A;
+    cout << "d=" << d<< endl;
     uint256_t k2 = d % n;
+    cout << "k2=" << k2<< endl;
     if (val1 == k2) {
         cout << "Correct Password\n";
         cout << "Sucessfully logged into system\n";

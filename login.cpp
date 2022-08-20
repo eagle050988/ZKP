@@ -75,6 +75,7 @@ int main()
 
     char* pEnd;
     g = uint256_t(buffer, 10);
+    cout << "g=" << g << endl;
     //end proses g file
 
     //open n file
@@ -91,6 +92,7 @@ int main()
     // close the file
     fclose(fptr);
     n = uint256_t(buffer, 10);
+    cout << "n=" << n << endl;
     //end proses n file
 
     //open y file
@@ -107,6 +109,7 @@ int main()
     // close the file
     fclose(fptr);
     y = uint256_t(buffer, 10);
+    cout << "y=" << y << endl;
     //end proses y file
 
     string user;
@@ -145,10 +148,14 @@ int main()
     // close the file
     fclose(fptr);
     X = uint256_t(buffer, 10);
+    cout << "x=" << X << endl;
     //end proses X file
 
     clock_t start = clock();
-    uint256_t q = (X + y) % (n - 1);
+    uint256_t q = (X + y);
+    cout << "q=" << q << endl;
+    q=q% (n - 1);
+    cout << "q=" << q << endl;
     // uint256_t val1 = g ^ q;
     // val1 = val1 % n;
     uint256_t val1 = power(g, q, n);
